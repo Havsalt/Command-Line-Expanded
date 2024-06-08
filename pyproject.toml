@@ -1,0 +1,31 @@
+[project]
+name = "cl"
+dynamic = ["version"]
+description = "Custom command line shell"
+authors = [
+    { name = "Havsalt", email = "knutolaihelgesen@gmail.com" }
+]
+dependencies = [
+    "actus~=0.4.0",
+    "colex~=0.1.0",
+]
+readme = "README.md"
+requires-python = ">= 3.10"
+license = { text = "MIT" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.version]
+path = "cl/__init__.py"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["cl"]
