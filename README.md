@@ -1,4 +1,5 @@
-# cl
+# Command Line Expanded (cl)
 
-Describe your project here.
+Custom command line shell
+
 * License: MIT
