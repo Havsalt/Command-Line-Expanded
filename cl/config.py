@@ -5,7 +5,7 @@ from typing import Any as _Any
 
 import toml as _toml
 
-from constants import CONFIG_FILEPATH as _CONFIG_FILEPATH
+from .constants import CONFIG_FILEPATH as _CONFIG_FILEPATH
 
 
 _singleton: Config | None = None

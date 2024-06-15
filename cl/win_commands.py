@@ -1,5 +1,5 @@
 import re as _re
-import tomli as _tomli
+import toml as _toml
 import pathlib as _pathlib
 import contextlib as _contextlib
 import subprocess as _subprocess
@@ -12,7 +12,7 @@ _HELP_COMMANDS_PATTERN = r"\b[A-Z]+\b"
 def collect() -> list[str]:
     commands: list[str] = []
     file = _pathlib.Path(__file__).parent / _CONFIG_FILENAME
-    config = _tomli.loads(file.read_text(encoding="utf-8"))
+    config = _toml.loads(file.read_text(encoding="utf-8"))
     registered = config["scripts"]
     commands.extend(registered.keys())
     with _contextlib.redirect_stdout(None):

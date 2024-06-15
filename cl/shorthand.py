@@ -6,7 +6,7 @@ from typing import (
     Callable as _Callable
 )
 
-import config as _config
+from . import config as _config
 
 _ConverterFunction: _TypeAlias = _Callable[..., str]
 
