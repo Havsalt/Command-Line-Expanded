@@ -2,7 +2,7 @@ from __future__ import annotations as _annotations
 
 from argparse import ArgumentParser as _ArgumentParser, _SubParsersAction
 
-from parser_args import ParserArguments as _ParserArguments
+from ..parser_args import ParserArguments as _ParserArguments
 
 
 class Command:

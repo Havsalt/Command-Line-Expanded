@@ -2,22 +2,26 @@ from __future__ import annotations as _annotations
 
 from typing import TYPE_CHECKING as _TYPE_CHECKING
 
-from levenshtein import (
+from strox import (
     get_similarity_score as _get_similarity_score,
     Budget as _Budget
 )
 
+import colex as _colex
+from actus import (
+    info as _info,
+    LogSection as _LogSection
+)
+
 from ._command import Command as _Command
-import config as _config
-import logger as _logger
-import win_commands as _win_commands
-import color as _color
-from color import paint as _paint
+from .. import win_commands as _win_commands
 from rich.pretty import pprint as _pprint
 
 if _TYPE_CHECKING:
     from ..parser_args import ParserArguments as _ParserArguments
 
+
+_list_command = _LogSection("Commands")
 
 _COMMAND_SORT_BUDGET = _Budget(
     substitution_cost=10,
@@ -39,12 +43,12 @@ class List(_Command):
         self.command_parser.add_argument("search", nargs="?")
 
     def process(self, args: _ParserArguments) -> None:
-        _logger.info(f"Listing registered {args.what}:")
+        _info(f"Listing registered {args.what}:")
         if args.what == "config":
             # top_level_keys = _config.get().keys() # iterator will be exhausted, only use once
             # longest_top_level_length = len(max(top_level_keys, key=len))
             for key, value in _config.get().items():
-                painted_key = _paint(key, _color.RED)
+                painted_key = _colex.colorize(key, _colex.RED)
                 print(painted_key, end=" ")
                 _pprint(value, expand_all=True)
             print()
@@ -68,7 +72,7 @@ class List(_Command):
         longest_field_length = len(max(field_keys, key=len))
         for key, value in _config.get()[args.what].items():
             padded_key = key.ljust(longest_field_length)
-            painted_key = _paint(padded_key, _color.RED)
+            painted_key = _colex.colorize(padded_key, _colex.RED)
             print(painted_key, end=" ")
             _pprint(value, expand_all=True)
         print()
