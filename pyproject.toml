@@ -6,12 +6,18 @@ authors = [
     { name = "Havsalt", email = "knutolaihelgesen@gmail.com" }
 ]
 dependencies = [
-    "actus~=0.4.0",
+    "actus~=0.5.0",
     "colex~=0.1.0",
+    "strox~=0.1.0",
+    "rich==13.7.1",
+    "toml==0.10.2",
 ]
 readme = "README.md"
 requires-python = ">= 3.10"
 license = { text = "MIT" }
+
+[project.scripts]
+main = "script:main"
 
 [build-system]
 requires = ["hatchling"]
