@@ -6,7 +6,7 @@ authors = [
     { name = "Havsalt", email = "knutolaihelgesen@gmail.com" }
 ]
 dependencies = [
-    "actus~=0.6.3",
+    "actus~=0.6.4",
     "colex~=0.2.0",
     "strox~=0.1.0",
     "rich==13.7.1",
