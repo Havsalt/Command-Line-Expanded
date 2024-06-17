@@ -2,6 +2,6 @@
 set ORIGIN=%CD%
 cd /d %~dp0
 call .venv\Scripts\activate.bat
-python script.py %*
+python -m cl %*
 cd /d %ORIGIN%
 deactivate
