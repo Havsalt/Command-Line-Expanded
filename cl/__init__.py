@@ -6,12 +6,12 @@ Custom command line shell
 
 Features:
 - Can pipe commands
-- Inject replacements for keywords
+- Inject substitutions for keywords
 - History # TODO
 - Adaptive autocompleation # TODO
 """
 
-__version__ = "0.5.0"
+__version__ = "0.5.1"
 
 import argparse
 
@@ -56,5 +56,5 @@ def main() -> int:
         command.process(args)
         return 0
 
-    shell.enter_session(context=parser, dev_mode=args.dev_mode)
+    shell.enter_session(dev_mode=args.dev_mode)
     return 0
