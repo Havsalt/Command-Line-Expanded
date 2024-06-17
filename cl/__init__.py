@@ -32,6 +32,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         prog="cl"
     )
+    parser.add_argument("-d", "--dev",
+                        action="store_true",
+                        dest="dev_mode",
+                        help="Enable dev mode")
     subparsers = parser.add_subparsers(required=False, dest="command")
     # TODO: add this, and a 'scripts' directory
 
@@ -52,5 +56,5 @@ def main() -> int:
         command.process(args)
         return 0
 
-    shell.enter_session(context=parser)
+    shell.enter_session(context=parser, dev_mode=args.dev_mode)
     return 0

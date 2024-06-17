@@ -29,8 +29,7 @@ KEYWORD_UNMATCHED_PATTERN = re.compile(
     r"(![-\w]+)[\s\\]?$",
     flags=re.RegexFlag.ASCII
 )
-import io
-dev = LogSection("Dev", fd=io.StringIO()) # DEV: suppress with `fd=io.StringIO()`
+dev = LogSection("Dev", supress_output=True)
 
 
 def expand_keywords(string: str) -> str:
@@ -105,7 +104,9 @@ def execute_stack(stack: Stack[Command]) -> str | None:
     return result
 
 
-def enter_session(context: ArgumentParser) -> None:
+def enter_session(context: ArgumentParser, dev_mode: bool = False) -> None:
+    if dev_mode:
+        dev.enable_output()
     while True:
         prompt = (
             colex.colorize("Enter command", colex.SALMON)

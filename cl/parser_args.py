@@ -18,3 +18,4 @@ class ParserArguments(_Namespace):
     section: str
     key: str
     value: str
+    dev_mode: bool
