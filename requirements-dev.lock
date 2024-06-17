@@ -11,6 +11,8 @@
 -e file:.
 actus==0.6.4
     # via cl
+altgraph==0.17.4
+    # via pyinstaller
 colex==0.2.0
     # via actus
     # via cl
@@ -18,10 +20,23 @@ markdown-it-py==3.0.0
     # via rich
 mdurl==0.1.2
     # via markdown-it-py
+packaging==24.1
+    # via pyinstaller
+    # via pyinstaller-hooks-contrib
+pefile==2023.2.7
+    # via pyinstaller
 pygments==2.18.0
     # via rich
+pyinstaller==6.8.0
+pyinstaller-hooks-contrib==2024.7
+    # via pyinstaller
+pywin32-ctypes==0.2.2
+    # via pyinstaller
 rich==13.7.1
     # via cl
+setuptools==70.0.0
+    # via pyinstaller
+    # via pyinstaller-hooks-contrib
 strox==0.1.0
     # via cl
 toml==0.10.2
