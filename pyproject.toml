@@ -34,4 +34,5 @@ path = "cl/__init__.py"
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["cl"]
+include = ["cl/**", "script.py", "cl.bat"]
+exclude = ["cl/**/__pycache__"]
