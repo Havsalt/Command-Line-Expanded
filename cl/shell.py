@@ -29,4 +29,4 @@ def enter_session(dev_mode: bool = False) -> None:
         expanded = expand_keywords(raw_command)
         command_stack = parse_command(expanded)
         result = execute_stack(command_stack)
-        dev(str(result))
+        dev(result)
