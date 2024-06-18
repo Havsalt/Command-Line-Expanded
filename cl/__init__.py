@@ -11,7 +11,7 @@ Features:
 - Adaptive autocompleation # TODO
 """
 
-__version__ = "0.5.2"
+__version__ = "0.5.3"
 
 import argparse
 
@@ -56,5 +56,5 @@ def main() -> int:
         command.process(args)
         return 0
 
-    shell.enter_session(dev_mode=args.dev_mode)
-    return 0
+    exit_code = shell.run(dev_mode=args.dev_mode)
+    return exit_code
