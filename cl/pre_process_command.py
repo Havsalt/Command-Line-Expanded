@@ -22,7 +22,7 @@ class _Stack(list[_T], _Generic[_T]): ...
 _Command: _TypeAlias = list[str]
 
 
-_KEYWORD_PREFIX = "!"
+# keyword prefix is "!", as seen below in the pattern
 _KEYWORD_INSERT_PATTERN = _re.compile(
     r"(![-\w]+)[\s\\]?$",
     flags=_re.RegexFlag.ASCII
@@ -65,6 +65,17 @@ def expand_keywords(string: str) -> str:
 
 
 def parse_command(string: str) -> _Stack[_Command]:
+    """Parse command string to stack
+
+    Args:
+        string (str): command as single string
+
+    Raises:
+        ValueError: No closing quotation (shlex.split)
+
+    Returns:
+        _Stack[_Command]: parsed command stack
+    """
     # NOTE: _Stack implementation with only decending layers
     # TODO: make a Tree implementation for layer contiunation
     parts = _shlex.split(string, posix=False)
