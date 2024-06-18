@@ -6,7 +6,7 @@ import colex
 from actus import warn
 
 from .intake import get_live_input
-from .pre_process_command import expand_keywords, parse_command, execute_stack
+from .process_command import expand_keywords, parse_command, execute_stack
 from .dev_utils import dev
 
 
