@@ -19,6 +19,12 @@ license = { text = "MIT" }
 [project.scripts]
 main = "cl:main"
 
+[tool.poe.tasks]
+main = "python -m cl"
+m = "python -m cl"
+dev = "python -m cl --dev"
+d = "python -m cl --dev"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
