@@ -1,8 +1,11 @@
 {
   "cl": "C:\\Users\\knuto\\Documents\\VisualStudioCode\\Python\\CommandLineTools\\CommandLine",
   "rye": "C:\\Users\\knuto\\rye",
-  "here": "C:\\Users\\knuto\\Documents\\VisualStudioCode\\Python\\CommandLineTools\\CopyHere\\here.bat",
+  "here": "C:\\Users\\knuto\\Documents\\VisualStudioCode\\Python\\CommandLineTools\\CopyHere",
   "lines": "C:\\Users\\knuto\\Documents\\VisualStudioCode\\Python\\CommandLineTools\\Lines\\lines",
+  "fab": "C:\\Users\\knuto\\Documents\\VisualStudioCode\\Python\\CommandLineTools\\Fabricate",
+  "grep": "C:\\Users\\knuto\\Documents\\VisualStudioCode\\Python\\CommandLineTools\\Grep",
+  "banner": "C:\\Users\\knuto\\Documents\\VisualStudioCode\\Python\\CommandLineTools\\Banner",
   "displaylib": "C:\\Users\\knuto\\Documents\\VisualStudioCode\\Python\\Libraries\\displaylib",
   "linflex": "C:\\Users\\knuto\\Documents\\VisualStudioCode\\Python\\Libraries\\linflex",
   "mathlib": "C:\\Users\\knuto\\Documents\\VisualStudioCode\\Python\\Libraries\\mathlib",
