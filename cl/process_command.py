@@ -102,15 +102,23 @@ def parse_command(string: str) -> _Stack[_Command]:
     return stack
 
 
-def execute_stack(stack: _Stack[_Command]) -> str | None:
+def execute_stack(stack: _Stack[_Command]) -> tuple[int, str | None]:
+    if not stack or not any(stack):
+        return (-1, None)
     result: str | None = None
+    last_process: _subprocess.CompletedProcess[str] | None
     while stack:
         command = stack.pop(-1)
         if result is not None:
             command.append(result)
         _dev(f"Command: {command}")
-        process = _subprocess.run(command, text=True, shell=True, capture_output=True)
-        result = process.stdout.rstrip("\n")
+        last_process = _subprocess.run(command, text=True, shell=True, capture_output=True)
+        result = last_process.stdout.rstrip("\n")
         _dev(f"Stdout: {result}")
     _dev(f"Result: {result}")
-    return result
+    status = (
+        last_process.returncode
+        if last_process is not None
+        else -1
+    )
+    return (status, result)

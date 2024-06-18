@@ -37,6 +37,7 @@ def run(dev_mode: bool = False) -> int:
                 dev(f"Stack: {command_stack}")
 
             continue # failed to parse command string
-        result = execute_stack(command_stack)
+        status, result = execute_stack(command_stack)
+        print(status)
         print(result)
     return 0
