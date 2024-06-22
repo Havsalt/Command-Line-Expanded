@@ -24,7 +24,7 @@ _Command: _TypeAlias = list[str]
 
 # keyword prefix is "!", as seen below in the pattern
 _KEYWORD_CAPTURE_PATTERN = _re.compile(
-    r"(![-\w]+)[\s\\/]?",
+    r"!([-\w]+)([\s\\/]?)",
     flags=_re.RegexFlag.ASCII
 )
 
@@ -40,25 +40,18 @@ def expand_keywords(string: str) -> str:
     fd.close()
 
     def replace(match: _re.Match[str]) -> str:
-        group = match.group()
-        has_valid_trail = group[-1] in (" ", "\\", "/")
-        keyword = (
-            group[1:]
-            if not has_valid_trail
-            else group[1:-1]
-        )
+        keyword: str = match.group(1)
+        trailing: str = match.group(2)
         if keyword not in substitutions:
-            return group
-        if has_valid_trail:
-            return substitutions[keyword] + group[-1] # add back trailing
-        return substitutions[keyword]
+            return match.group()
+        return substitutions[keyword] + trailing # trailing may be empty string
     
     # substitue keywords with their replacements if possible
     for keyword in sorted(substitutions.keys(), key=len, reverse=True):
         string = _re.sub(_KEYWORD_CAPTURE_PATTERN, replace, string)
     # _warn non-expanded keywords
     for unmatched in _re.finditer(_KEYWORD_CAPTURE_PATTERN, string):
-        keyword = unmatched.group()[1:]
+        keyword = unmatched.group(1)
         closest = _strox.get_closest_match(
             keyword,
             substitutions.keys()
