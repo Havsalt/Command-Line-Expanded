@@ -90,7 +90,10 @@ def get_live_input( # TODO: add History param
                 _sys.stdout.write(move_code)
             _sys.stdout.flush()
         
-        key = key_code.decode()
+        try:
+            key = key_code.decode("utf-8")
+        except UnicodeDecodeError:
+            continue
         if key not in _WHITELISTED:
             continue
         
