@@ -11,7 +11,7 @@ Features:
 - Adaptive autocompleation # TODO
 """
 
-__version__ = "0.6.2"
+__version__ = "0.6.3"
 
 import argparse
 
