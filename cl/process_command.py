@@ -47,9 +47,9 @@ def expand_keywords(string: str) -> str:
         return substitutions[keyword] + trailing # trailing may be empty string
     
     # substitue keywords with their replacements if possible
-    for keyword in sorted(substitutions.keys(), key=len, reverse=True):
+    for keyword in substitutions.keys():
         string = _re.sub(_KEYWORD_CAPTURE_PATTERN, replace, string)
-    # _warn non-expanded keywords
+    # warn non-expanded keywords
     for unmatched in _re.finditer(_KEYWORD_CAPTURE_PATTERN, string):
         keyword = unmatched.group(1)
         closest = _strox.get_closest_match(
@@ -92,7 +92,7 @@ def parse_command(string: str) -> _Stack[_Command]:
     if command:
         stack.append(command)
     _dev(f"Sub: {stack}")
-    # TODO: structure for tree iterations
+    # TODO: structure for tree iterations - execute while parsing!
     # initial command (caller ish)
     # arg - "|" is result of subcommand, layer down
     # (in "|") - "<|" is layer up subcommand
