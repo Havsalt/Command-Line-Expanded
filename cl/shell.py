@@ -38,8 +38,10 @@ def run(no_blink: bool = False, dev_mode: bool = False) -> int:
             " " in raw_command
             and len(raw_command.split(" ", maxsplit=1)) == 2
             and raw_command.split(" ")[0] == "cd"
-        ):
-            new_cwd = pathlib.Path(raw_command.split(" ", maxsplit=1)[1]).resolve()
+        ): # FIXME: will move on to default handle if `cd` gets no args
+            raw_path = raw_command.split(" ", maxsplit=1)[1]
+            expanded_raw_path = expand_keywords(raw_path)
+            new_cwd = pathlib.Path(expanded_raw_path).resolve()
             if new_cwd.exists() and new_cwd.is_dir():
                 dev(f"Valid path: $[{new_cwd}]")
                 os.chdir(new_cwd)
